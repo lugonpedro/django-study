@@ -4,14 +4,14 @@ from .models import Course, Rating
 class CourseSerializer(serializers.ModelSerializer):
   class Meta:
     model = Course
-    fields = {
+    fields = (
       'id',
       'title',
       'url',
       'created_at',
       'updated_at',
       'active'
-    }
+    )
 
 class RatingSerializer(serializers.ModelSerializer):
   class Meta:
@@ -19,7 +19,7 @@ class RatingSerializer(serializers.ModelSerializer):
       'email': {'write_only': True}
     }
     model = Rating
-    fields = {
+    fields = (
       'id',
       'course',
       'name',
@@ -29,4 +29,4 @@ class RatingSerializer(serializers.ModelSerializer):
       'created_at',
       'updated_at',
       'active'
-    }
+    )
