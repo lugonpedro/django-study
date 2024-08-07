@@ -1,7 +1,17 @@
 from rest_framework import serializers
 from .models import Course, Rating
+from .serializers import RatingSerializer
 
 class CourseSerializer(serializers.ModelSerializer):
+  # Nested Relationship
+  # ratings = RatingSerializer(many=True, read_only=True)
+
+  # HyperLinked Related Field
+  # ratings = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='rating-detail')
+
+  # Primary Key Related Field
+  ratings = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+
   class Meta:
     model = Course
     fields = (
@@ -10,7 +20,8 @@ class CourseSerializer(serializers.ModelSerializer):
       'url',
       'created_at',
       'updated_at',
-      'active'
+      'active',
+      'ratings'
     )
 
 class RatingSerializer(serializers.ModelSerializer):
