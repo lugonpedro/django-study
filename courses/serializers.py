@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Course, Rating
-from .serializers import RatingSerializer
 
 class CourseSerializer(serializers.ModelSerializer):
   # Nested Relationship
